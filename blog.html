@@ -105,10 +105,41 @@ header{
     border-radius:5px;
     margin-bottom:15px;
 }
+
+footer{
+    background:darkslategrey;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+    font-size:16px;
+}
+
+body{
+    user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+}
+
+.watermark{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(-30deg);
+    font-size:60px;
+    color:rgba(0,0,0,0.08);
+    pointer-events:none;
+    z-index:9999;
+    white-space:nowrap;
+}
 </style>
 </head>
 
 <body>
+
+    <div class="watermark">
+    © Beyond Happiness
+</div>
 
 <header>
 <h1>My Blog</h1>
@@ -273,6 +304,10 @@ header{
 </p>
 </div>
 
+<footer>
+    © 2026 Beyond Happiness | All Rights Reserved | Content by Dr. Kalidas Patil
+</footer>
+
 <script>
 
 /* Open Any Page */
@@ -309,6 +344,34 @@ document.getElementById("detailPage").style.display="block";
 
 }
 
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+document.addEventListener("keydown", function(e){
+
+    /* Disable Ctrl+C */
+    if(e.ctrlKey && e.key === 'c'){
+        e.preventDefault();
+    }
+
+    /* Disable Ctrl+U */
+    if(e.ctrlKey && e.key === 'u'){
+        e.preventDefault();
+    }
+
+    /* Disable Ctrl+S */
+    if(e.ctrlKey && e.key === 's'){
+        e.preventDefault();
+    }
+
+    /* Disable Print */
+    if(e.key === 'PrintScreen'){
+        navigator.clipboard.writeText('');
+        alert("Screenshots are disabled on this page.");
+    }
+
+});
 </script>
 
 </body>
